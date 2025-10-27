@@ -243,3 +243,93 @@ httpd.conf  magic
 https://github.com/schoolofdevops/html-sample-app.git
 
 ```
+
+### to download git code 
+
+```
+sudo dnf install git -y 
+cd /tmp
+git clone  https://github.com/schoolofdevops/html-sample-app.git
+
+ ls
+ar
+html-sample-app
+systemd-private-5110cd1c24e0499b8338ff24c6
+
+```
+
+### copy code 
+
+```
+sudo cp -rf  html-sample-app/*  /var/www/html/
+[ec2-user@ip-172-31-43-251 tmp]$ 
+[ec2-user@ip-172-31-43-251 tmp]$ 
+[ec2-user@ip-172-31-43-251 tmp]$ ls /var/www/html/
+assets  elements.html  generic.html  html5up-phantom.zip  images  index.html  LICENSE.txt  README.txt
+[ec2-user@ip-172-31-43-251 tmp]$ 
+
+```
+### some basic details about apache httpd 
+
+<img src="httpd1.png">
+
+### starting serviced 
+
+```
+[ec2-user@ip-172-31-43-251 tmp]$ sudo systemctl start httpd 
+[ec2-user@ip-172-31-43-251 tmp]$ sudo systemctl status  httpd 
+● httpd.service - The Apache HTTP Server
+     Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; preset: disabled)
+     Active: active (running) since Mon 2025-10-27 07:08:43 UTC; 2h 10min ago
+       Docs: man:httpd.service(8)
+   Main PID: 25533 (httpd)
+     Status: "Total requests: 174; Idle/Busy workers 100/0;Requests/sec: 0.0223; Bytes served/sec:  71 B/sec"
+      Tasks: 177 (limit: 48572)
+     Memory: 25.8M
+        CPU: 4.124s
+     CGroup: /system.slice/httpd.service
+             ├─25533 /usr/sbin/httpd -DFOREGROUND
+             ├─25534 /usr/sbin/httpd -DFOREGROUND
+             ├─25535 /usr/sbin/httpd -DFOREGROUND
+             ├─25536 /usr/sbin/httpd -DFOREGROUND
+             └─25537 /usr/sbin/httpd -DFOREGROUND
+
+
+```
+### service vs systemctl 
+
+<img src="httpd2.png">
+
+### enable / disable any service after reboot 
+
+```
+[ec2-user@ip-172-31-43-251 tmp]$ sudo systemctl enable   httpd 
+Created symlink /etc/systemd/system/multi-user.target.wants/httpd.service → /usr/lib/systemd/system/httpd.service.
+[ec2-user@ip-172-31-43-251 tmp]$ 
+[ec2-user@ip-172-31-43-251 tmp]$ 
+[ec2-user@ip-172-31-43-251 tmp]$ sudo systemctl disable  httpd 
+Removed "/etc/systemd/system/multi-user.target.wants/httpd.service".
+[ec2-user@ip-172-31-43-251 tmp]$ 
+[ec2-user@ip-172-31-43-251 tmp]$ 
+
+
+```
+### info about the process 
+
+```
+ 165  cd /proc/
+  166  ls
+  167  id
+  168  mkdir  hello
+  169  cd 29222/
+  170  pwd
+  171  ls
+  172  ls ns
+  173  pidof  httpd
+  174  cd
+  175  top 
+  176  ps 
+  177  ps   -e  
+  178  ps   -aux   
+
+```
