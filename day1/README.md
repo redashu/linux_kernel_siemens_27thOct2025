@@ -333,3 +333,10 @@ Removed "/etc/systemd/system/multi-user.target.wants/httpd.service".
   178  ps   -aux   
 
 ```
+
+## Installing screen command 
+
+```
+dnf install https://rpmfind.net/linux/epel/9/Everything/x86_64/Packages/s/screen-4.8.0-6.el9.x86_64.rpm
+
+```
