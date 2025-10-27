@@ -193,3 +193,53 @@ access_log  error_log
 logout
 
 ```
+### Deploy / host fronted UI application 
+
+### Installing httpd on rhel 9 
+
+```
+sudo dnf install httpd 
+
+```
+
+### verify log location 
+
+```
+sudo ls /var/log/
+audit		 chrony			cron		 dnf.rpm.log  insights-client  messages  rhsm	 spooler   tuned
+btmp		 cloud-init.log		dnf.librepo.log  hawkey.log   lastlog	       private	 rhui	 sssd	   wtmp
+choose_repo.log  cloud-init-output.log	dnf.log		 httpd	      maillog	       README	 secure  tallylog
+[ec2-user@ip-172-31-43-251 ~]$ sudo ls /var/log/httpd/
+access_log  error_log
+[ec2-user@ip-172-31-43-251 ~]$ 
+
+```
+
+### navigating to httpd.conf file 
+
+```
+[ec2-user@ip-172-31-43-251 ~]$ cd  /etc/httpd/
+[ec2-user@ip-172-31-43-251 httpd]$ ls
+conf  conf.d  conf.modules.d  logs  modules  run  state
+[ec2-user@ip-172-31-43-251 httpd]$ 
+[ec2-user@ip-172-31-43-251 httpd]$ 
+[ec2-user@ip-172-31-43-251 httpd]$ cd  conf.d/
+[ec2-user@ip-172-31-43-251 conf.d]$ ls
+autoindex.conf  README  userdir.conf  welcome.conf
+[ec2-user@ip-172-31-43-251 conf.d]$ cd  .. 
+[ec2-user@ip-172-31-43-251 httpd]$ ls
+conf  conf.d  conf.modules.d  logs  modules  run  state
+[ec2-user@ip-172-31-43-251 httpd]$ cd  conf
+[ec2-user@ip-172-31-43-251 conf]$ ls
+httpd.conf  magic
+[ec2-user@ip-172-31-43-251 conf]$ 
+
+
+```
+
+### sample html code webapp 
+
+```
+https://github.com/schoolofdevops/html-sample-app.git
+
+```
