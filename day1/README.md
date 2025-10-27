@@ -127,3 +127,7 @@ REDHAT_SUPPORT_PRODUCT_VERSION="9.6"
 
 <img src="ed1.png">
 
+
+### some info about  vim editor shortcuts 
+
+<img src="vim1.png">
