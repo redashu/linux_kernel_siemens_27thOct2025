@@ -66,3 +66,64 @@ ashu  name  oke
 
 ```
 
+### more basic kernel and os related commands 
+
+```
+[ec2-user@ip-172-31-43-251 ~]$ uname 
+Linux
+[ec2-user@ip-172-31-43-251 ~]$ uname -r
+5.14.0-570.22.1.el9_6.x86_64
+
+
+[ec2-user@ip-172-31-43-251 ~]$ 
+[ec2-user@ip-172-31-43-251 ~]$ 
+[ec2-user@ip-172-31-43-251 ~]$ 
+[ec2-user@ip-172-31-43-251 ~]$ host
+hostid       hostname     hostnamectl  
+[ec2-user@ip-172-31-43-251 ~]$ hostname
+hostname     hostnamectl  
+
+
+[ec2-user@ip-172-31-43-251 ~]$ hostnamectl 
+ Static hostname: ip-172-31-43-251.ap-south-1.compute.internal
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: 1298f4adc3574559a95b357877b7d476
+         Boot ID: 5110cd1c24e0499b8338ff24c6961c92
+  Virtualization: xen
+Operating System: Red Hat Enterprise Linux 9.6 (Plow)         
+     CPE OS Name: cpe:/o:redhat:enterprise_linux:9::baseos
+          Kernel: Linux 5.14.0-570.22.1.el9_6.x86_64
+    Architecture: x86-64
+ Hardware Vendor: Xen
+  Hardware Model: HVM domU
+Firmware Version: 4.11.amazon
+[ec2-user@ip-172-31-43-251 ~]$ cat  /etc/os-release 
+NAME="Red Hat Enterprise Linux"
+VERSION="9.6 (Plow)"
+ID="rhel"
+ID_LIKE="fedora"
+VERSION_ID="9.6"
+PLATFORM_ID="platform:el9"
+PRETTY_NAME="Red Hat Enterprise Linux 9.6 (Plow)"
+ANSI_COLOR="0;31"
+LOGO="fedora-logo-icon"
+CPE_NAME="cpe:/o:redhat:enterprise_linux:9::baseos"
+HOME_URL="https://www.redhat.com/"
+DOCUMENTATION_URL="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9"
+BUG_REPORT_URL="https://issues.redhat.com/"
+
+REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 9"
+REDHAT_BUGZILLA_PRODUCT_VERSION=9.6
+REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
+REDHAT_SUPPORT_PRODUCT_VERSION="9.6"
+[ec2-user@ip-172-31-43-251 ~]$ 
+
+
+```
+
+
+### file editors in linux kernel 
+
+<img src="ed1.png">
+
