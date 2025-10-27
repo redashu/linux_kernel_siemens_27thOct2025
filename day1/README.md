@@ -131,3 +131,65 @@ REDHAT_SUPPORT_PRODUCT_VERSION="9.6"
 ### some info about  vim editor shortcuts 
 
 <img src="vim1.png">
+
+
+### directory for logs purpose 
+
+```
+ 17  cd  /var/
+   18  ls
+   19  cd log
+   20  ls
+   21  ls  -l 
+   22  ls
+   23  cat  secure 
+   24  sudo cat  secure 
+   25  pwd
+   26  ls
+   27  cat messages 
+   28  sudo cat messages 
+   29  ls
+   30  sudo cat messages 
+   31  sudo tail   secure 
+   32  sudo tail  -f   secure 
+   33  sudo tail    secure 
+   34  sudo tail  -20   secure 
+   35  sudo tail  -f   secure 
+
+```
+### logs for apache httpd 
+
+```
+  19  ls /var/log/
+   20  ls /var/log/httpd/
+   21  vim  /var/www/html/index.html
+   22  systemctl start httpd
+   23  ls /var/log/httpd/
+   24  cat /var/log/httpd/access_log 
+   25  cat /var/log/httpd/error_log 
+
+```
+
+### more info 
+
+```
+[test@ip-172-31-43-251 log]$ sudo -i 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# whoami 
+root
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# cd /var/log/
+[root@ip-172-31-43-251 log]# ls
+audit            chrony                 cron             dnf.rpm.log  insights-client  messages  rhsm    spooler   tuned
+btmp             cloud-init.log         dnf.librepo.log  hawkey.log   lastlog          private   rhui    sssd      wtmp
+choose_repo.log  cloud-init-output.log  dnf.log          httpd        maillog          README    secure  tallylog
+[root@ip-172-31-43-251 log]# cd httpd/
+[root@ip-172-31-43-251 httpd]# ls
+access_log  error_log
+[root@ip-172-31-43-251 httpd]# 
+[root@ip-172-31-43-251 httpd]# 
+[root@ip-172-31-43-251 httpd]# exit
+logout
+
+```
