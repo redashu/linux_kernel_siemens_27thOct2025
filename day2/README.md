@@ -127,3 +127,42 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 
 ```
+
+### system level env 
+
+```
+root@ip-172-31-43-251 ~]# cd /etc/profile.d/
+[root@ip-172-31-43-251 profile.d]# ls
+bash_completion.sh  colorls.csh      colorxzgrep.sh  csh.local       gawk.csh  lang.sh   sh.local
+colorgrep.csh       colorls.sh       colorzgrep.csh  debuginfod.csh  gawk.sh   less.csh  which2.csh
+colorgrep.sh        colorxzgrep.csh  colorzgrep.sh   debuginfod.sh   lang.csh  less.sh   which2.sh
+[root@ip-172-31-43-251 profile.d]# 
+[root@ip-172-31-43-251 profile.d]# 
+[root@ip-172-31-43-251 profile.d]# cat  /etc/environment 
+[root@ip-172-31-43-251 profile.d]# 
+[root@ip-172-31-43-251 profile.d]# vim  /etc/environment 
+[root@ip-172-31-43-251 profile.d]# source /etc/environment 
+[root@ip-172-31-43-251 profile.d]# cat /etc/environment 
+d=20900
+[root@ip-172-31-43-251 profile.d]# vim /etc/profile
+[root@ip-172-31-43-251 profile.d]# 
+
+
+```
+
+## to run shell script 
+
+### method 1 
+
+```
+bash  ashu.sh 
+
+```
+
+### method 2 
+
+```
+chmod +x ashu.sh
+./ashu.sh 
+
+```
