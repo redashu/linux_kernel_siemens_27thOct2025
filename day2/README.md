@@ -91,3 +91,39 @@ systemd─┬─NetworkManager───2*[{NetworkManager}]
 /home/ec2-user/.ashu_data_history.txt
 
 ```
+
+### setting variable with and without export 
+
+## Note with export all the child process can access it 
+
+```
+[ec2-user@ip-172-31-43-251 ~]$ z=200
+[ec2-user@ip-172-31-43-251 ~]$ 
+[ec2-user@ip-172-31-43-251 ~]$ ps
+    PID TTY          TIME CMD
+   3423 pts/7    00:00:00 bash
+   3733 pts/7    00:00:00 ps
+[ec2-user@ip-172-31-43-251 ~]$ bash -c "echo $z"
+200
+[ec2-user@ip-172-31-43-251 ~]$ python
+Python 3.9.21 (main, Feb 10 2025, 00:00:00) 
+[GCC 11.5.0 20240719 (Red Hat 11.5.0-5)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import os
+>>> print(os.getenv("z"))
+None
+>>> 
+[ec2-user@ip-172-31-43-251 ~]$ export z=300
+[ec2-user@ip-172-31-43-251 ~]$ bash -c "echo $z"
+300
+[ec2-user@ip-172-31-43-251 ~]$ 
+[ec2-user@ip-172-31-43-251 ~]$ python
+Python 3.9.21 (main, Feb 10 2025, 00:00:00) 
+[GCC 11.5.0 20240719 (Red Hat 11.5.0-5)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import os
+>>> print(os.getenv("z"))
+300
+>>> 
+
+```
