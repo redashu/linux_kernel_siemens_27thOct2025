@@ -166,3 +166,42 @@ chmod +x ashu.sh
 ./ashu.sh 
 
 ```
+
+### IO redirection 
+
+<img src="io1.png">
+
+### storage based redirection 
+
+<img src="io2.png">
+
+
+### some more commands 
+
+```
+132  cat /etc/passwd  |  head -4   | tail -1
+  133  cp -v  /etc/passwd  . 
+  134  cat  passwd 
+  135  ls
+  136  cat  a.txt 
+  137  tac  a.txt 
+  138  cat  passwd  
+  139  cat  passwd    |  cut  -d:  -f1
+  140  vim  ~/.bashrc 
+  141  source ~/.bashrc 
+  142  allusers 
+  143  history 
+  144  cat  passwd    |  cut  -d:  -f1,3  
+  145  cat  passwd    |  cut  -d:  -f1,7  
+  146  cat  passwd    | awk  -F: "print  $1" 
+  147  cat  passwd    | awk  -F: "$1" 
+  148  cat  passwd    | awk  -F: $1
+  149  cat  passwd    | awk  -F: '{print  $1}'  
+  150  cat  passwd    | awk  -F: '{print  $1 and $7 }'  
+  151  cat  passwd    | awk  -F: '{print  $1 " " $7 }'  
+  152  cat  passwd    | awk  -F: '{print  $1 "___" $7 }'  
+  153  cat  passwd    | awk  -F: '{print  $1 " " $7 }'  
+  154  history 
+
+
+```
