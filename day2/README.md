@@ -205,3 +205,30 @@ chmod +x ashu.sh
 
 
 ```
+
+
+### info about useradd 
+
+<img src="u1.png">
+
+### passwd command 
+
+```
+root@ip-172-31-43-251 ~]# grep ashut  /etc/shadow
+ashutoshh:$6$rounds=100000$9lO1GkexOY0vqiAX$85SijklO4JGLej9NW5rMRaI0vGf8UhnXicgsgBb182Xd9QOcxcQ1l4SEG/SqQtTEAv97huv012vrmWbWKx8TI1:20389:0:99999:7:::
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# passwd  -d ashutoshh
+Removing password for user ashutoshh.
+passwd: Success
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# grep ashut  /etc/shadow
+ashutoshh::20389:0:99999:7:::
+[root@ip-172-31-43-251 ~]# passwd  -l ashutoshh
+Locking password for user ashutoshh.
+passwd: Success
+[root@ip-172-31-43-251 ~]# grep ashut  /etc/shadow
+ashutoshh:!!:20389:0:99999:7:::
+[root@ip-172-31-43-251 ~]# 
+
+```
