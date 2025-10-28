@@ -232,3 +232,54 @@ ashutoshh:!!:20389:0:99999:7:::
 [root@ip-172-31-43-251 ~]# 
 
 ```
+### user deletion 
+
+```
+[root@ip-172-31-43-251 ~]# userdel   ashutoshh 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls /home/
+ashu  ashutoshh  ec2-user  t1  test
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls /var/spool/mail/
+ashu  ashutoshh  ec2-user  t1  test
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# userdel  -r ashu 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls /home/
+ashutoshh  ec2-user  t1  test
+[root@ip-172-31-43-251 ~]# ls /var/spool/mail/
+ashutoshh  ec2-user  t1  test
+[root@ip-172-31-43-251 ~]# 
+
+```
+### group info 
+
+```
+[root@ip-172-31-43-251 ~]# groupadd   tech 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# grep tech /etc/group
+tech:x:1005:
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# usermod -aG tech  ec2-user
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# grep tech /etc/group
+tech:x:1005:ec2-user
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# usermod -aG tech  root
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# grep tech /etc/group
+tech:x:1005:ec2-user,root
+
+
+===>
+groupdel  tech 
+```
+
+
+### Permissions & security in Linux 
+
+<img src="sec1.png">
+
