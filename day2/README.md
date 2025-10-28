@@ -33,3 +33,61 @@ systemd─┬─NetworkManager───2*[{NetworkManager}]
 
 <img src="boot1.png">
 
+## Understanding Shell in LInux 
+
+<img src="shell1.png">
+
+### info about shell 
+
+<img src="shell2.png">
+
+### shell avaialble shells 
+
+```
+ 
+[ec2-user@ip-172-31-43-251 ~]$ cat  /etc/shells 
+/bin/sh
+/bin/bash
+/usr/bin/sh
+/usr/bin/bash
+[ec2-user@ip-172-31-43-251 ~]$ 
+
+
+```
+
+### checking current shell of user 
+
+```
+ echo $SHELL 
+/bin/bash
+[ec2-user@ip-172-31-43-251 ~]$ 
+
+127  echo $SHELL 
+  128  echo $HOME 
+  129  echo $LANG
+  130  echo $HISTSIZE
+  131  echo $HISTFILE
+
+
+```
+
+### .bashrc and .bash_profile file 
+
+<img src="rc1.png">
+
+### using source command to load .bashrc file 
+
+```
+[ec2-user@ip-172-31-43-251 ~]$ vim  .bashrc 
+[ec2-user@ip-172-31-43-251 ~]$ 
+[ec2-user@ip-172-31-43-251 ~]$ echo $HISTFILE
+/home/ec2-user/.bash_history
+[ec2-user@ip-172-31-43-251 ~]$ echo $HISTSIZE
+1000
+[ec2-user@ip-172-31-43-251 ~]$ source  ~/.bashrc 
+[ec2-user@ip-172-31-43-251 ~]$ echo $HISTSIZE
+20000
+[ec2-user@ip-172-31-43-251 ~]$ echo $HISTFILE
+/home/ec2-user/.ashu_data_history.txt
+
+```
