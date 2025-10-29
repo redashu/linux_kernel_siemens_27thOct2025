@@ -133,4 +133,29 @@ vim ashu.repo
 
 ```
 
+### SOme info about software package 
+
+```
+141  rpm -qf  `which date`
+  142  rm -rf `which date`
+  143  rpm -qf  `which date`
+  144  busybox 
+  145  dnf install busybox 
+  146  date
+  147  busybox  date 
+  148  man busybox 
+  149  dnf  whatprovides  */date
+  150  dnf install coreutils
+  151  date
+  152  dnf reinstall coreutils
+  153  date
+  154  history 
+  155  rpm -qf `which date`
+  156  rm -rf `which cal`
+  157  cal
+  158  busybox  cal 
+  159  cal
+  160  dnf reinstall util-linux
+
+```
 
