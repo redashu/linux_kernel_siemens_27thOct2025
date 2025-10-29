@@ -283,3 +283,126 @@ groupdel  tech
 
 <img src="sec1.png">
 
+### understand linux permissions 
+
+
+```
+[root@ip-172-31-43-251 ~]# mkdir  /opt/hello 
+[root@ip-172-31-43-251 ~]# echo hello >/opt/data.txt 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls -ld /opt/hello/
+drwxr-xr-x. 2 root root 6 Oct 28 11:15 /opt/hello/
+[root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+-rw-r--r--. 1 root root 6 Oct 28 11:15 /opt/data.txt
+[root@ip-172-31-43-251 ~]# 
+
+```
+
+### permssions 
+
+<img src="pm1.png">
+
+### commands 
+
+```
+root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+-rw-r--r--. 1 root root 6 Oct 28 11:17 /opt/data.txt
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# chmod  g+w  /opt/data.txt 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+-rw-rw-r--. 1 root root 6 Oct 28 11:17 /opt/data.txt
+[root@ip-172-31-43-251 ~]# chmod  o+wx  /opt/data.txt 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+-rw-rw-rwx. 1 root root 6 Oct 28 11:17 /opt/data.txt
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# chmod  a-r   /opt/data.txt 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+--w--w--wx. 1 root root 6 Oct 28 11:17 /opt/data.txt
+[root@ip-172-31-43-251 ~]# chmod u+r,g+x,o-x  /opt/data.txt 
+[root@ip-172-31-43-251 ~]# 
+
+
+```
+
+### permission via octal numbers
+
+```
+[root@ip-172-31-43-251 ~]# chmod  644  /opt/data.txt 
+[root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+-rw-r--r--. 1 root root 6 Oct 28 11:17 /opt/data.txt
+[root@ip-172-31-43-251 ~]# chmod  777  /opt/data.txt 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+-rwxrwxrwx. 1 root root 6 Oct 28 11:17 /opt/data.txt
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# chmod  644   /opt/data.txt 
+[root@ip-172-31-43-251 ~]# 
+
+
+
+```
+### chaning owner and group 
+
+```
+[root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+-rw-r--r--. 1 root root 6 Oct 28 11:17 /opt/data.txt
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# useradd harry 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# chown harry   /opt/data.txt 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+-rw-r--r--. 1 harry root 6 Oct 28 11:17 /opt/data.txt
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# groupadd  tech 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# chgrp tech   /opt/data.txt 
+[root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+-rw-r--r--. 1 harry tech 6 Oct 28 11:17 /opt/data.txt
+[root@ip-172-31-43-251 ~]# chown  root:harry /opt/data.txt 
+[root@ip-172-31-43-251 ~]# ls -l /opt/data.txt 
+-rw-r--r--. 1 root harry 6 Oct 28 11:17 /opt/data.txt
+
+```
+### --- project 
+
+```
+root@ip-172-31-43-251 ~]# mkdir    /projectX
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls -ld  /projectX/
+drwxr-xr-x. 2 root root 6 Oct 28 11:34 /projectX/
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# groupadd manager
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# chown :manager  /projectX/
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# ls -ld  /projectX/
+drwxr-xr-x. 2 root manager 6 Oct 28 11:34 /projectX/
+[root@ip-172-31-43-251 ~]# chmod g+w  /projectX/
+[root@ip-172-31-43-251 ~]# ls -ld  /projectX/
+drwxrwxr-x. 2 root manager 6 Oct 28 11:34 /projectX/
+[root@ip-172-31-43-251 ~]# 
+[root@ip-172-31-43-251 ~]# useradd jack 
+[root@ip-172-31-43-251 ~]# usermod -aG manager  jack 
+[root@ip-172-31-43-251 ~]# usermod -aG manager  harry 
+[root@ip-172-31-43-251 ~]# grep manger /etc/group
+[root@ip-172-31-43-251 ~]# grep manager /etc/group
+manager:x:1009:jack,harry
+
+```
+### sticky BIt & SGID 
+
+```
+chmod +t /projecTX
+
+chmod g+s /projecTX
+```
