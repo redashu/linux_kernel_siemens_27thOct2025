@@ -225,3 +225,36 @@ Mem:           7.5Gi       534Mi       6.5Gi        18Mi       734Mi       7.0Gi
 Swap:             0B          0B          0B
 
 ```
+
+### more swap commands 
+
+```
+root@ip-172-31-42-139 ~]# blkid /dev/ashu-vg-new/ashu-swap1 
+/dev/ashu-vg-new/ashu-swap1: UUID="ecbeff6b-67cb-41d9-98bd-7d2b83430da9" TYPE="swap"
+[root@ip-172-31-42-139 ~]# 
+[root@ip-172-31-42-139 ~]# 
+[root@ip-172-31-42-139 ~]# blkid   | grep swap 
+/dev/mapper/ashu--vg--new-ashu--swap1: UUID="ecbeff6b-67cb-41d9-98bd-7d2b83430da9" TYPE="swap"
+[root@ip-172-31-42-139 ~]# cat /etc/fstab 
+UUID=b838f0f7-0240-46ea-bf53-c811361cbe43	/	xfs	defaults	0	0
+UUID=27bfefa8-69e7-41ce-a184-c487d56cac49	/boot	xfs	defaults	0	0
+UUID=7B77-95E7	/boot/efi	vfat	defaults,uid=0,gid=0,umask=077,shortname=winnt	0	2
+UUID="ecbeff6b-67cb-41d9-98bd-7d2b83430da9"  swap    swap  defaults 0 0 
+[root@ip-172-31-42-139 ~]# 
+[root@ip-172-31-42-139 ~]# free -h
+               total        used        free      shared  buff/cache   available
+Mem:           7.5Gi       535Mi       6.5Gi        18Mi       735Mi       7.0Gi
+Swap:          4.0Gi          0B       4.0Gi
+[root@ip-172-31-42-139 ~]# swapoff -a
+[root@ip-172-31-42-139 ~]# free -h
+               total        used        free      shared  buff/cache   available
+Mem:           7.5Gi       533Mi       6.5Gi        18Mi       734Mi       7.0Gi
+Swap:             0B          0B          0B
+[root@ip-172-31-42-139 ~]# swapon -a
+[root@ip-172-31-42-139 ~]# free -h
+               total        used        free      shared  buff/cache   available
+Mem:           7.5Gi       535Mi       6.5Gi        18Mi       734Mi       7.0Gi
+Swap:          4.0Gi          0B       4.0Gi
+
+```
+
