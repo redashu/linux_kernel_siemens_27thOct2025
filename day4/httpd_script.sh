@@ -1,27 +1,29 @@
 #!/usr/bin/bash
 
+while [true]:
+do
+    echo "checking apache user PID status.."
+    echo "________________________________"
+    echo "________________________________"
+    echo "________________________________"
+    sleep 2
+    ps -u apache  -o cmd,pid,ppid,%cpu,%mem
 
-echo "checking apache user PID status.."
-echo "________________________________"
-echo "________________________________"
-echo "________________________________"
-sleep 2
-ps -u apache  -o cmd,pid,ppid,%cpu,%mem
 
+    echo "finding parent PID of httpd"
+    echo "________________________________"
+    echo "________________________________"
+    echo "________________________________"
 
-echo "finding parent PID of httpd"
-echo "________________________________"
-echo "________________________________"
-echo "________________________________"
+    httpd_pid=`pidof httpd  | cut -d" " -f5`
 
-httpd_pid=`pidof httpd  | cut -d" " -f5`
+    echo $httpd_pid
 
-echo $httpd_pid
+    echo "memory consumption by HTTPD "
+    echo "________________________________"
+    echo "________________________________"
+    echo "________________________________"
+    echo "________________________________"
 
-echo "memory consumption by HTTPD "
-echo "________________________________"
-echo "________________________________"
-echo "________________________________"
-echo "________________________________"
-
-ps_mem -p $httpd_pid
+    ps_mem -p $httpd_pid
+done 
