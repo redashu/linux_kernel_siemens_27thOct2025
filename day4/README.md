@@ -314,3 +314,16 @@ Hello this is jack
 
 
 ```
+
+### logs for custom apps 
+
+```
+cat ashu.conf 
+<virtualhost  172.31.42.139:80>
+	servername  www.ashu.com 
+	documentroot  /var/www/ashu/
+        CustomLog  /var/log/httpd/ashu/access.log  combined  
+        ErrorLog  /var/log/httpd/ashu/error.log 
+</virtualhost>
+
+```
