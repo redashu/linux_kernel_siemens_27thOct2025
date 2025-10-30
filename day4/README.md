@@ -258,3 +258,59 @@ Swap:          4.0Gi          0B       4.0Gi
 
 ```
 
+## apache httpd VHOST 
+
+<img src="vhost1.png">
+
+### creating vhost conf file 
+
+```
+[root@ip-172-31-42-139 www]# cd /etc/httpd/
+[root@ip-172-31-42-139 httpd]# ls
+conf  conf.d  conf.modules.d  logs  modules  run  state
+[root@ip-172-31-42-139 httpd]# 
+[root@ip-172-31-42-139 httpd]# 
+[root@ip-172-31-42-139 httpd]# cd conf.d/
+[root@ip-172-31-42-139 conf.d]# ls
+autoindex.conf  README  userdir.conf  welcome.conf
+[root@ip-172-31-42-139 conf.d]# touch   ashu.conf    jack.conf 
+[root@ip-172-31-42-139 conf.d]# ls
+ashu.conf  autoindex.conf  jack.conf  README  userdir.conf  welcome.conf
+[root@ip-172-31-42-139 conf.d]# 
+
+
+
+===>ashu.conf 
+
+[root@ip-172-31-42-139 conf.d]# cat ashu.conf 
+<virtualhost  172.31.42.139:80>
+	servername  www.ashu.com 
+	documentroot  /var/www/ashu/
+</virtualhost>
+
+===>
+httpd -t
+systemctl reload httpd
+
+===
+ot@ip-172-31-42-139 ~]# hostname -i
+172.31.42.139
+[root@ip-172-31-42-139 ~]# vim  /etc/hosts 
+[root@ip-172-31-42-139 ~]# cat  /etc/hosts 
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+
+172.31.42.139    www.ashu.com
+172.31.42.139    www.jack.com
+[root@ip-172-31-42-139 ~]# 
+[root@ip-172-31-42-139 ~]# 
+[root@ip-172-31-42-139 ~]# 
+[root@ip-172-31-42-139 ~]# curl http://www.ashu.com
+Hello this is ashutoshh
+[root@ip-172-31-42-139 ~]# curl http://www.jack.com
+Hello this is jack
+[root@ip-172-31-42-139 ~]# 
+
+
+```
