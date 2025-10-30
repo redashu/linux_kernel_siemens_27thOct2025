@@ -69,6 +69,43 @@
   Block device           253:0
    
 
+===> Format and Mount 
+
+ mkfs.xfs    /dev/ashu-vg-new/mywebsite
+   33  rpm -q httpd
+   34  mount  /dev/ashu-vg-new/mywebsite  /var/www/html/
+
 
 ```
+
+### copy webcode to  /var/www/html 
+
+```
+cd /tmp/
+[root@ip-172-31-42-139 tmp]# git clone https://github.com/schoolofdevops/html-sample-app.git
+Cloning into 'html-sample-app'...
+remote: Enumerating objects: 74, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 74 (delta 0), reused 0 (delta 0), pack-reused 71 (from 1)
+Receiving objects: 100% (74/74), 1.38 MiB | 3.57 MiB/s, done.
+Resolving deltas: 100% (5/5), done.
+[root@ip-172-31-42-139 tmp]# ls
+html-sample-app
+systemd-private-d4a9f161545e4784b47e319b183bfee4-chronyd.service-ZxuX9o
+systemd-private-d4a9f161545e4784b47e319b183bfee4-dbus-broker.service-bfrGLx
+systemd-private-d4a9f161545e4784b47e319b183bfee4-irqbalance.service-lL6Ym7
+systemd-private-d4a9f161545e4784b47e319b183bfee4-kdump.service-tCmuXa
+systemd-private-d4a9f161545e4784b47e319b183bfee4-systemd-logind.service-N1QCaj
+[root@ip-172-31-42-139 tmp]# 
+[root@ip-172-31-42-139 tmp]# 
+[root@ip-172-31-42-139 tmp]# cp -rf html-sample-app/*  /var/www/html/
+[root@ip-172-31-42-139 tmp]# 
+[root@ip-172-31-42-139 tmp]# ls /var/www/html/
+assets  elements.html  generic.html  html5up-phantom.zip  images  index.html  LICENSE.txt  README.txt
+[root@ip-172-31-42-139 tmp]# 
+
+
+```
+
 
