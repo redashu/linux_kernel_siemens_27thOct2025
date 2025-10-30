@@ -108,4 +108,15 @@ assets  elements.html  generic.html  html5up-phantom.zip  images  index.html  LI
 
 ```
 
+### lvm extend
+
+```
+111  lvextend  --size  +5G  /dev/ashu-vg-new/mywebsite 
+  112  lvs
+  113  df -h
+  114  fallocate -l 8G  /var/www/html/ashu.txt 
+  115  history 
+  116  xfs_growfs   /dev/ashu-vg-new/mywebsite 
+
+```
 
