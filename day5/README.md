@@ -145,3 +145,66 @@ helloo12.txt  helloo17.txt  helloo21.txt  helloo26.
 
 172.31.14.249:/data/docs  /mnt/ashu/    nfs4    _netdev    0   0
 ```
+
+## CIFS details 
+
+<img src="cifs1.png">
+
+
+### Installing samba server 
+
+```
+dnf install samba 
+
+### configure locaiton 
+
+root@ip-172-31-42-139 ~]# cd /etc/samba/
+[root@ip-172-31-42-139 samba]# ls
+lmhosts  smb.conf  smb.conf.backup  smb.conf.backup1  smb.conf.example
+[root@ip-172-31-42-139 samba]# 
+[root@ip-172-31-42-139 samba]# 
+[root@ip-172-31-42-139 samba]# 
+[root@ip-172-31-42-139 samba]# mkdir  -p  /opt/ashu-data/docs 
+[root@ip-172-31-42-139 samba]# 
+[root@ip-172-31-42-139 samba]# 
+[root@ip-172-31-42-139 samba]# chmod  777 /opt/ashu-data/docs/
+[root@ip-172-31-42-139 samba]# 
+[root@ip-172-31-42-139 samba]# 
+[root@ip-172-31-42-139 samba]# restorecon  /opt/ashu-data/docs/
+[root@ip-172-31-42-139 samba]# 
+
+
+
+```
+### confdigure samba 
+
+```
+vim /etc/samba/smb.conf 
+
+[ashudata-share]
+
+path = /opt/ashu-data/docs/
+read only = no
+browsable = yes
+writable = yes
+guest ok = no
+valid users =  ashunew
+
+```
+
+### creating user 
+
+```
+useradd  -s /sbin/nologin   ashunew 
+
+smbpasswd -a  ashunew  
+New SMB password:
+Retype new SMB password:
+Added user ashunew.
+
+
+```
+## Kernel some info 
+
+<img src="ki.png">
+
