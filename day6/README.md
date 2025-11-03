@@ -75,3 +75,59 @@ BOOT_IMAGE=(hd0,gpt3)/vmlinuz-5.14.0-570.22.1.el9_6.x86_64 root=UUID=b838f0f7-02
 
 ```
 
+### listing loaded kernel module
+
+```
+[root@ip-172-31-42-139 ~]# lsmod   | wc -l 
+52
+[root@ip-172-31-42-139 ~]# lsmod   | grep xfs
+xfs                  2686976  3
+libcrc32c              12288  4 nf_conntrack,nf_nat,nf_tables,xfs
+[root@ip-172-31-42-139 ~]# lsmod   | grep  dm
+dm_snapshot            69632  3
+dm_bufio               61440  1 dm_snapshot
+dm_mirror              28672  0
+dm_region_hash         28672  1 dm_mirror
+dm_log                 24576  2 dm_region_hash,dm_mirror
+dm_mod                245760  21 dm_log,dm_snapshot,dm_mirror,dm_bufio
+[root@ip-172-31-42-139 ~]# lsmod   | grep  dev
+[root@ip-172-31-42-139 ~]# 
+
+```
+### more info 
+
+```
+ 794  history 
+[root@ip-172-31-42-139 httpd]# lsmod  | grep xfs
+xfs                  2686976  3
+libcrc32c              12288  4 nf_conntrack,nf_nat,nf_tables,xfs
+[root@ip-172-31-42-139 httpd]# mod
+modinfo             modprobe            modulemd-validator  
+[root@ip-172-31-42-139 httpd]# modinfo xfs
+filename:       /lib/modules/5.14.0-570.22.1.el9_6.x86_64/kernel/fs/xfs/xfs.ko.xz
+license:        GPL
+description:    SGI XFS with ACLs, security attributes, scrub, quota, no debug enabled
+author:         Silicon Graphics, Inc.
+alias:          fs-xfs
+rhelversion:    9.6
+
+```
+### module loading 
+
+```
+[root@ip-172-31-42-139 httpd]# lsmod  | grep loop 
+[root@ip-172-31-42-139 httpd]# modprobe   loop 
+[root@ip-172-31-42-139 httpd]# lsmod  | grep loop 
+loop                   40960  0
+[root@ip-172-31-42-139 httpd]# modinfo  loop 
+filename:       /lib/modules/5.14.0-570.22.1.el9_6.x86_64/kernel/drivers/block/loop.ko.xz
+alias:          devname:loop-control
+alias:          char-major-10-237
+alias:          block-major-7-*
+license:        GPL
+description:    Loopback device support
+rhelversion:    9.6
+srcversion:     BA928A39F2DA87FA12B9073
+
+
+```
