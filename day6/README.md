@@ -74,3 +74,4 @@ BOOT_IMAGE=(hd0,gpt3)/vmlinuz-5.14.0-570.22.1.el9_6.x86_64 root=UUID=b838f0f7-02
    3722   0  19 grep --color=auto dd
 
 ```
+
