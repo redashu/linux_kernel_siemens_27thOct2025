@@ -16,3 +16,61 @@
 
 <img src="se1.png">
 
+
+### making grub.cfg updated with kernel parament persistenly ready 
+
+```
+
+cat  /etc/default/grub 
+GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 net.ifnames=0 nvme_core.io_timeout=4294967295 nosound"
+GRUB_TIMEOUT=0
+GRUB_ENABLE_BLSCFG=true
+GRUB_DEFAULT=saved
+[root@ip-172-31-42-139 ~]# cd /boot/grub2/
+[root@ip-172-31-42-139 grub2]# ls
+fonts  grub.cfg  grubenv  i386-pc
+[root@ip-172-31-42-139 grub2]# 
+[root@ip-172-31-42-139 grub2]# 
+[root@ip-172-31-42-139 grub2]# 
+[root@ip-172-31-42-139 grub2]# grub2-mkconfig  >/boot/grub2/grub.cfg  
+
+
+
+```
+### currently booted kernel parameters list
+
+```
+cat /proc/cmdline 
+BOOT_IMAGE=(hd0,gpt3)/vmlinuz-5.14.0-570.22.1.el9_6.x86_64 root=UUID=b838f0f7-0240-46ea-bf53-c811361cbe43 console=tty0 console=ttyS0,115200n8 net.ifnames=0 nvme_core.io_timeout=4294967295 crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M
+[root@ip-172-31-42-139 grub2]# 
+
+
+
+```
+### checking with renice command to set priority values
+
+```
+[root@ip-172-31-42-139 ~]# dd if=/dev/zero of=/dev/null &
+[1] 3356
+[root@ip-172-31-42-139 ~]# jobs
+[1]+  Running                 dd if=/dev/zero of=/dev/null &
+[root@ip-172-31-42-139 ~]# dd if=/dev/zero of=/dev/null &
+[2] 3411
+[root@ip-172-31-42-139 ~]# 
+[root@ip-172-31-42-139 ~]# jobs
+[1]-  Running                 dd if=/dev/zero of=/dev/null &
+[2]+  Running                 dd if=/dev/zero of=/dev/null &
+[root@ip-172-31-42-139 ~]# ps -eo pid,ni,pri,cmd | grep dd
+      2   0  19 [kthreadd]
+   3356   0  19 dd if=/dev/zero of=/dev/null
+   3411   0  19 dd if=/dev/zero of=/dev/null
+   3527   0  19 grep --color=auto dd
+[root@ip-172-31-42-139 ~]# renice -n -10 -p 3356 
+3356 (process ID) old priority 0, new priority -10
+[root@ip-172-31-42-139 ~]# ps -eo pid,ni,pri,cmd | grep dd
+      2   0  19 [kthreadd]
+   3356 -10  29 dd if=/dev/zero of=/dev/null
+   3411   0  19 dd if=/dev/zero of=/dev/null
+   3722   0  19 grep --color=auto dd
+
+```
