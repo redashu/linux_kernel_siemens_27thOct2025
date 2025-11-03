@@ -131,3 +131,89 @@ srcversion:     BA928A39F2DA87FA12B9073
 
 
 ```
+
+### sysctl 
+
+### checking few details 
+
+```
+sysctl  -a   |  grep ipv4   | grep -i forward
+net.ipv4.conf.all.bc_forwarding = 0
+net.ipv4.conf.all.forwarding = 0
+net.ipv4.conf.all.mc_forwarding = 0
+net.ipv4.conf.default.bc_forwarding = 0
+net.ipv4.conf.default.forwarding = 0
+net.ipv4.conf.default.mc_forwarding = 0
+net.ipv4.conf.eth0.bc_forwarding = 0
+net.ipv4.conf.eth0.forwarding = 0
+net.ipv4.conf.eth0.mc_forwarding = 0
+net.ipv4.conf.lo.bc_forwarding = 0
+net.ipv4.conf.lo.forwarding = 0
+net.ipv4.conf.lo.mc_forwarding = 0
+net.ipv4.ip_forward = 0
+net.ipv4.ip_forward_update_priority = 1
+net.ipv4.ip_forward_use_pmtu = 0
+[root@ashutoshh ~]# 
+
+
+
+###--
+sysctl  -a   |  grep swap 
+vm.swappiness = 30
+[root@ashutoshh ~]# sysctl  -a   |  grep file 
+fs.file-max = 9223372036854775807
+fs.file-nr = 1376	0	9223372036854775807
+fs.xfs.filestream_centisecs = 3000
+
+```
+### updating packet forwarding 
+
+```
+[root@ashutoshh ~]#   sysctl   net.ipv4.ip_forward 
+net.ipv4.ip_forward = 0
+[root@ashutoshh ~]#   sysctl   net.ipv4.ip_forward=1 
+net.ipv4.ip_forward = 1
+[root@ashutoshh ~]# sysctl  -a   |  grep ipv4   | grep -i forward
+net.ipv4.conf.all.bc_forwarding = 0
+net.ipv4.conf.all.forwarding = 1
+net.ipv4.conf.all.mc_forwarding = 0
+net.ipv4.conf.default.bc_forwarding = 0
+net.ipv4.conf.default.forwarding = 1
+net.ipv4.conf.default.mc_forwarding = 0
+net.ipv4.conf.eth0.bc_forwarding = 0
+net.ipv4.conf.eth0.forwarding = 1
+net.ipv4.conf.eth0.mc_forwarding = 0
+net.ipv4.conf.lo.bc_forwarding = 0
+net.ipv4.conf.lo.forwarding = 1
+net.ipv4.conf.lo.mc_forwarding = 0
+net.ipv4.ip_forward = 1
+net.ipv4.ip_forward_update_priority = 1
+
+```
+### checking on /proc 
+
+```
+[root@ashutoshh ~]# cat  /proc/sys/net/ipv4/ip_forward
+1
+[root@ashutoshh ~]# 
+[root@ashutoshh ~]# 
+[root@ashutoshh ~]# 
+[root@ashutoshh ~]#   sysctl   net.ipv4.ip_forward=0
+net.ipv4.ip_forward = 0
+[root@ashutoshh ~]# 
+[root@ashutoshh ~]# 
+[root@ashutoshh ~]# cat  /proc/sys/net/ipv4/ip_forward
+0
+[root@ashutoshh ~]#   sysctl   net.ipv4.ip_forward=1
+net.ipv4.ip_forward = 1
+[root@ashutoshh ~]# 
+[root@ashutoshh ~]# 
+[root@ashutoshh ~]# cat  /proc/sys/net/ipv4/ip_forward
+1
+[root@ashutoshh ~]# 
+
+```
+### enable network packet forwarding persistenly in your machine 
+
+<img src="net1.png">
+

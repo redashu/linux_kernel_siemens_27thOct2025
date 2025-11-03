@@ -167,3 +167,4 @@ Remove it:
 sudo rmmod hello_module
 dmesg | tail -n 5
 ```
+
